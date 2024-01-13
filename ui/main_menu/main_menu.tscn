@@ -1,0 +1,249 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq7a507rt06vc"]
+
+[ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_75jul"]
+[ext_resource type="Script" path="res://ui/main_menu/lobby.gd" id="1_qldrs"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_75jul")
+
+[node name="List" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -127.5
+offset_top = -136.0
+offset_right = 127.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Singleplayer" type="Button" parent="List"]
+layout_mode = 2
+disabled = true
+text = "Singleplayer"
+
+[node name="Multiplayer" type="Button" parent="List"]
+layout_mode = 2
+text = "Multiplayer"
+
+[node name="Settings" type="Button" parent="List"]
+layout_mode = 2
+disabled = true
+text = "Settings"
+
+[node name="Quit" type="Button" parent="List"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Label" type="Label" parent="List"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+text = "Networking Project"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Multiplayer" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.152941, 0.152941, 0.152941, 1)
+script = ExtResource("1_qldrs")
+
+[node name="Container" type="PanelContainer" parent="Multiplayer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JoinLobby" type="VBoxContainer" parent="Multiplayer/Container"]
+layout_mode = 2
+
+[node name="Search" type="HBoxContainer" parent="Multiplayer/Container/JoinLobby"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Multiplayer/Container/JoinLobby/Search"]
+layout_mode = 2
+text = "Search"
+
+[node name="Search" type="LineEdit" parent="Multiplayer/Container/JoinLobby/Search"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Refresh" type="Button" parent="Multiplayer/Container/JoinLobby/Search"]
+layout_mode = 2
+text = "Refresh"
+
+[node name="HSeparator" type="HSeparator" parent="Multiplayer/Container/JoinLobby"]
+layout_mode = 2
+
+[node name="Title" type="HBoxContainer" parent="Multiplayer/Container/JoinLobby"]
+layout_mode = 2
+
+[node name="Password" type="CheckBox" parent="Multiplayer/Container/JoinLobby/Title"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Multiplayer/Container/JoinLobby/Title"]
+layout_mode = 2
+text = "Lobby Name"
+
+[node name="Lobbies" type="PanelContainer" parent="Multiplayer/Container/JoinLobby"]
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="Multiplayer/Container/JoinLobby/Lobbies"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="List" type="VBoxContainer" parent="Multiplayer/Container/JoinLobby/Lobbies/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Choice" type="HBoxContainer" parent="Multiplayer/Container/JoinLobby"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="JoinLobby" type="Button" parent="Multiplayer/Container/JoinLobby/Choice"]
+layout_mode = 2
+text = "Join Lobby"
+
+[node name="CreateLobby" type="Button" parent="Multiplayer/Container/JoinLobby/Choice"]
+layout_mode = 2
+text = "Create Lobby"
+
+[node name="Cancel" type="Button" parent="Multiplayer/Container/JoinLobby/Choice"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="CreateLobby" type="VBoxContainer" parent="Multiplayer/Container"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Multiplayer/Container/CreateLobby"]
+layout_mode = 2
+text = "Lobby Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LobbyName" type="LineEdit" parent="Multiplayer/Container/CreateLobby"]
+layout_mode = 2
+alignment = 1
+max_length = 20
+
+[node name="Availability" type="HBoxContainer" parent="Multiplayer/Container/CreateLobby"]
+layout_mode = 2
+
+[node name="Private" type="CheckBox" parent="Multiplayer/Container/CreateLobby/Availability"]
+layout_mode = 2
+button_pressed = true
+text = "Private"
+
+[node name="Friends" type="CheckBox" parent="Multiplayer/Container/CreateLobby/Availability"]
+layout_mode = 2
+text = "Friends"
+
+[node name="Public" type="CheckBox" parent="Multiplayer/Container/CreateLobby/Availability"]
+layout_mode = 2
+text = "Public"
+
+[node name="Choice" type="HBoxContainer" parent="Multiplayer/Container/CreateLobby"]
+layout_mode = 2
+
+[node name="CreateLobby" type="Button" parent="Multiplayer/Container/CreateLobby/Choice"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Create Lobby"
+
+[node name="Cancel" type="Button" parent="Multiplayer/Container/CreateLobby/Choice"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[node name="Lobby" type="VBoxContainer" parent="Multiplayer/Container"]
+visible = false
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Multiplayer/Container/Lobby"]
+layout_mode = 2
+text = "Lobby Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Multiplayer/Container/Lobby"]
+layout_mode = 2
+
+[node name="Players" type="VBoxContainer" parent="Multiplayer/Container/Lobby"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+
+[node name="Chat" type="PanelContainer" parent="Multiplayer/Container/Lobby"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="Multiplayer/Container/Lobby/Chat"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Output" type="RichTextLabel" parent="Multiplayer/Container/Lobby/Chat/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_following = true
+
+[node name="Input" type="HBoxContainer" parent="Multiplayer/Container/Lobby"]
+layout_mode = 2
+
+[node name="Input" type="LineEdit" parent="Multiplayer/Container/Lobby/Input"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="Multiplayer/Container/Lobby/Input"]
+layout_mode = 2
+text = "Send"
+
+[node name="Choice" type="HBoxContainer" parent="Multiplayer/Container/Lobby"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="LeaveLobby" type="Button" parent="Multiplayer/Container/Lobby/Choice"]
+layout_mode = 2
+text = "Leave Lobby"
+
+[node name="StartGame" type="Button" parent="Multiplayer/Container/Lobby/Choice"]
+layout_mode = 2
+disabled = true
+text = "Start Game"
+
+[connection signal="pressed" from="List/Multiplayer" to="." method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="List/Quit" to="." method="_on_quit_pressed"]
+[connection signal="visibility_changed" from="Multiplayer/Container/JoinLobby" to="Multiplayer" method="_refresh_lobbies"]
+[connection signal="pressed" from="Multiplayer/Container/JoinLobby/Search/Refresh" to="Multiplayer" method="_refresh_lobbies"]
+[connection signal="pressed" from="Multiplayer/Container/JoinLobby/Choice/JoinLobby" to="Multiplayer" method="_on_join_pressed"]
+[connection signal="pressed" from="Multiplayer/Container/JoinLobby/Choice/CreateLobby" to="Multiplayer" method="_on_create_pressed"]
+[connection signal="pressed" from="Multiplayer/Container/JoinLobby/Choice/Cancel" to="Multiplayer" method="_on_cancel_pressed" binds= [0]]
+[connection signal="text_changed" from="Multiplayer/Container/CreateLobby/LobbyName" to="Multiplayer" method="_on_lobby_name_text_changed"]
+[connection signal="pressed" from="Multiplayer/Container/CreateLobby/Availability/Private" to="Multiplayer" method="_on_availability_pressed" binds= [0]]
+[connection signal="pressed" from="Multiplayer/Container/CreateLobby/Availability/Friends" to="Multiplayer" method="_on_availability_pressed" binds= [1]]
+[connection signal="pressed" from="Multiplayer/Container/CreateLobby/Availability/Public" to="Multiplayer" method="_on_availability_pressed" binds= [2]]
+[connection signal="pressed" from="Multiplayer/Container/CreateLobby/Choice/CreateLobby" to="Multiplayer" method="_on_host_pressed"]
+[connection signal="pressed" from="Multiplayer/Container/CreateLobby/Choice/Cancel" to="Multiplayer" method="_on_cancel_pressed" binds= [1]]
+[connection signal="text_submitted" from="Multiplayer/Container/Lobby/Input/Input" to="Multiplayer" method="_on_send_chat_pressed"]
+[connection signal="pressed" from="Multiplayer/Container/Lobby/Input/Button" to="Multiplayer" method="_on_send_chat_pressed"]
+[connection signal="pressed" from="Multiplayer/Container/Lobby/Choice/LeaveLobby" to="Multiplayer" method="_on_leave_pressed"]
+[connection signal="pressed" from="Multiplayer/Container/Lobby/Choice/StartGame" to="Multiplayer" method="_on_start_pressed"]

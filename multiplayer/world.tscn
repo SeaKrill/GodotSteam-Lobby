@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://drhgat3jjkonn"]
+
+[ext_resource type="Script" path="res://multiplayer/world.gd" id="1_uixad"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vu43x"]
+
+[sub_resource type="Sky" id="Sky_e6xtp"]
+sky_material = SubResource("ProceduralSkyMaterial_vu43x")
+
+[sub_resource type="Environment" id="Environment_7v3ho"]
+background_mode = 2
+sky = SubResource("Sky_e6xtp")
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_uixad")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7v3ho")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.506606, 0.862178, 0, -0.862178, 0.506606, 0, 13.8263, 8.92413)
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+use_collision = true
+size = Vector3(50, 0.1, 50)
+
+[node name="Wall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.09779, 1.48776, 0)
+use_collision = true
+size = Vector3(2.14307, 3.08398, 1)
+
+[node name="Wall2" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.141005, 0, -0.990009, 0, 1, 0, 0.990009, 0, -0.141005, -3.13856, 1.48776, -7.61437)
+use_collision = true
+size = Vector3(2.14307, 3.08398, 4.95801)
+
+[node name="Players" type="Node3D" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://entities/player/player_controller.tscn")
+spawn_path = NodePath("../Players")
+
+[node name="Menu" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Host" type="Button" parent="Menu"]
+offset_left = 358.0
+offset_top = 163.0
+offset_right = 570.0
+offset_bottom = 262.0
+text = "Host"
+
+[node name="Join" type="Button" parent="Menu"]
+offset_left = 356.0
+offset_top = 278.0
+offset_right = 570.0
+offset_bottom = 378.0
+text = "Join"

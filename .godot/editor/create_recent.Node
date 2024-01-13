@@ -1,0 +1,14 @@
+MultiplayerSpawner
+Label3D
+Node3D
+ColorRect
+CanvasLayer
+ProgressBar
+Node
+Button
+MultiplayerSynchronizer
+DirectionalLight3D
+WorldEnvironment
+Camera3D
+CollisionShape3D
+CSGMesh3D

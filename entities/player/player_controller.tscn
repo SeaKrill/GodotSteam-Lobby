@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://pfwjfcjphrdy"]
+
+[ext_resource type="Script" path="res://entities/player/player_controller.gd" id="1_f0nlp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ofm6b"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qoh60"]
+radial_segments = 5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_on4x2"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p6eol"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_sg4m5"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:steam_id")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+
+[node name="PlayerController" type="CharacterBody3D"]
+script = ExtResource("1_f0nlp")
+
+[node name="SteamName" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24709, 0)
+billboard = 1
+text = "NULL"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ofm6b")
+
+[node name="PlaceholderBody" type="CSGMesh3D" parent="CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_qoh60")
+material = SubResource("StandardMaterial3D_on4x2")
+
+[node name="CameraController" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Arms" type="Node3D" parent="CameraController"]
+visible = false
+
+[node name="PlaceholderArms" type="CSGMesh3D" parent="CameraController/Arms"]
+transform = Transform3D(1, 0, 0, 0, 0.898794, -0.438371, 0, 0.438371, 0.898794, 0.881, -0.5, -0.87)
+mesh = SubResource("BoxMesh_p6eol")
+material = SubResource("StandardMaterial3D_on4x2")
+
+[node name="Camera3D" type="Camera3D" parent="CameraController"]
+fov = 59.0
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_sg4m5")

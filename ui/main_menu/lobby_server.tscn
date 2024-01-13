@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cc6s13jm8m8jp"]
+
+[node name="Lobby" type="HBoxContainer"]
+
+[node name="Private" type="CheckBox" parent="."]
+layout_mode = 2
+disabled = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 0
+
+[node name="Amount" type="Label" parent="."]
+layout_mode = 2
+vertical_alignment = 1
